@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.3"
+    }
+}
+
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.github.ming13.oktwitter"
+
+        minSdkVersion 21
+        targetSdkVersion 23
+
+        def versionMajor = 1
+        def versionMinor = 0
+        def versionPatch = 0
+        def versionBuild = 0;
+
+        versionCode createVersionCode(versionMajor, versionMinor, versionPatch, versionBuild)
+        versionName createVersionName(versionMajor, versionMinor, versionPatch)
+    }
+
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+    }
+}
+
+def createVersionCode(versionMajor, versionMinor, versionPatch, versionBuild) {
+    return versionMajor * 10 ** 5 + versionMinor * 10 ** 3 + versionPatch * 10 ** 1 + versionBuild * 10 ** 0
+}
+
+def createVersionName(versionMajor, versionMinor, versionPatch) {
+    return "${versionMajor}.${versionMinor}.${versionPatch}"
+}
+
+dependencies {
+    repositories {
+        jcenter()
+    }
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.3"
+
+    testCompile "junit:junit:4.12"
+}

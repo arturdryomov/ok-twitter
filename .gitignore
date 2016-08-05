@@ -1,0 +1,24 @@
+# Configuration
+
+## Android SDK
+
+local.properties
+
+## Signing
+
+*.keystore
+signing.properties
+
+# IDE
+
+## Android Studio
+
+.idea/
+*.iml
+
+# Build System
+
+## Gradle
+
+.gradle/
+build/
