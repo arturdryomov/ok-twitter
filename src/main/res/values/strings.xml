@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="application_name" translatable="false">OkTwitter</string>
+
+    <string name="button_retry">Retry</string>
+
+    <string name="error_tweets">Dang it. Something went totally wrong, but most likely we can recover!</string>
+
+</resources>

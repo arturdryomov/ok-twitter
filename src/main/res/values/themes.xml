@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.OkTwitter" parent="@android:style/Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/background_primary</item>
+        <item name="android:colorPrimaryDark">@color/background_primary_dark</item>
+        <item name="android:colorAccent">?android:colorPrimary</item>
+    </style>
+
+</resources>

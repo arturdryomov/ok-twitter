@@ -2,10 +2,17 @@
 <manifest package="com.github.ming13.oktwitter"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <application>
+    <uses-permission
+        android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="false"
+        android:name=".OkTwitterApplication"
+        android:label="@string/application_name"
+        android:theme="@style/Theme.OkTwitter">
 
         <activity
-            android:name=".StreamActivity">
+            android:name=".activity.TweetsActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

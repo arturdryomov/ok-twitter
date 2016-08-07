@@ -4,13 +4,17 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath "com.android.tools.build:gradle:2.1.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.3"
     }
 }
 
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
+
+kapt {
+    generateStubs = true
+}
 
 android {
     compileSdkVersion 23
@@ -25,10 +29,17 @@ android {
         def versionMajor = 1
         def versionMinor = 0
         def versionPatch = 0
-        def versionBuild = 0;
+        def versionBuild = 0
 
         versionCode createVersionCode(versionMajor, versionMinor, versionPatch, versionBuild)
         versionName createVersionName(versionMajor, versionMinor, versionPatch)
+
+        def twitterProperties = readProperties("twitter.properties")
+
+        buildConfigField "String", "TWITTER_CONSUMER_KEY", formatStringField(readProperty(twitterProperties, "consumer.key"))
+        buildConfigField "String", "TWITTER_CONSUMER_SECRET", formatStringField(readProperty(twitterProperties, "consumer.secret"))
+        buildConfigField "String", "TWITTER_ACCESS_TOKEN", formatStringField(readProperty(twitterProperties, "access.token"))
+        buildConfigField "String", "TWITTER_ACCESS_TOKEN_SECRET", formatStringField(readProperty(twitterProperties, "access.token-secret"))
     }
 
     sourceSets {
@@ -44,12 +55,62 @@ def createVersionName(versionMajor, versionMinor, versionPatch) {
     return "${versionMajor}.${versionMinor}.${versionPatch}"
 }
 
+def readProperties(propertiesFileName) {
+    def properties = new Properties()
+    def propertiesFile = file(propertiesFileName)
+
+    if (propertiesFile.exists()) {
+        properties.load(propertiesFile.newInputStream())
+    }
+
+    return properties
+}
+
+def readProperty(properties, propertyName) {
+    def property = properties[propertyName]
+
+    if (property) {
+        return property
+    } else {
+        return ""
+    }
+}
+
+def formatStringField(field) {
+    return "\"${field}\""
+}
+
 dependencies {
     repositories {
         jcenter()
+
+        maven {
+            url "https://maven.fabric.io/public"
+        }
+
+        maven {
+            url "https://clojars.org/repo/"
+        }
     }
 
+    kapt "com.jakewharton:butterknife-compiler:8.2.1"
+    kapt "com.google.dagger:dagger-compiler:2.5"
+
+    compile "com.android.support:recyclerview-v7:24.0.0"
+    compile "com.google.dagger:dagger:2.5"
+    compile "com.jakewharton:butterknife:8.2.1"
+    compile "com.jakewharton.timber:timber:4.1.2"
     compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.3"
+    compile "com.squareup.okhttp3:okhttp:3.4.1"
+    compile "com.squareup.okhttp3:logging-interceptor:3.4.1"
+    compile "com.squareup.okhttp3:mockwebserver:3.4.1"
+    compile "com.squareup.picasso:picasso:2.5.2"
+    compile "com.squareup.retrofit2:retrofit:2.1.0"
+    compile "com.squareup.retrofit2:adapter-rxjava:2.1.0"
+    compile "com.squareup.retrofit2:converter-gson:2.1.0"
+    compile "com.twitter.sdk.android:twitter-core:1.7.0"
+    compile "io.reactivex:rxandroid:1.2.1"
 
     testCompile "junit:junit:4.12"
+    testCompile "com.nhaarman:mockito-kotlin:0.5.2"
 }

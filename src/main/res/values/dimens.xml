@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="size_divider">1dp</dimen>
+
+    <dimen name="text_subheading">16sp</dimen>
+    <dimen name="text_primary">14sp</dimen>
+
+</resources>
