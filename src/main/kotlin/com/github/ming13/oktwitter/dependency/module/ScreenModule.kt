@@ -1,6 +1,7 @@
-package com.github.ming13.oktwitter.dependency
+package com.github.ming13.oktwitter.dependency.module
 
 import android.app.*
+import com.github.ming13.oktwitter.dependency.annotation.PerScreen
 import dagger.Module
 import dagger.Provides
 

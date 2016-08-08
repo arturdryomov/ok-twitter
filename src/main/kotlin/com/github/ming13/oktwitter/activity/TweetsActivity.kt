@@ -10,7 +10,7 @@ import com.github.ming13.oktwitter.OkTwitterApplication
 import com.github.ming13.oktwitter.R
 import com.github.ming13.oktwitter.adapter.TweetsAdapter
 import com.github.ming13.oktwitter.contract.TweetsContract
-import com.github.ming13.oktwitter.dependency.ScreenModule
+import com.github.ming13.oktwitter.dependency.module.ScreenModule
 import com.github.ming13.oktwitter.presenter.TweetsPresenter
 import com.github.ming13.oktwitter.repository.model.Tweet
 import com.github.ming13.oktwitter.view.RecyclerViewDividerDecoration

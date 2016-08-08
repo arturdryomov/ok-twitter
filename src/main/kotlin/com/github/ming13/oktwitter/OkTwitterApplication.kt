@@ -1,10 +1,10 @@
 package com.github.ming13.oktwitter
 
 import android.app.Application
-import com.github.ming13.oktwitter.dependency.ApplicationComponent
-import com.github.ming13.oktwitter.dependency.ApplicationModule
-import com.github.ming13.oktwitter.dependency.DaggerApplicationComponent
-import com.github.ming13.oktwitter.dependency.RepositoryModule
+import com.github.ming13.oktwitter.dependency.component.ApplicationComponent
+import com.github.ming13.oktwitter.dependency.component.DaggerApplicationComponent
+import com.github.ming13.oktwitter.dependency.module.ApplicationModule
+import com.github.ming13.oktwitter.dependency.module.RepositoryModule
 import com.github.ming13.oktwitter.util.Android
 import timber.log.Timber
 

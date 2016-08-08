@@ -1,6 +1,8 @@
-package com.github.ming13.oktwitter.dependency
+package com.github.ming13.oktwitter.dependency.module
 
 import android.content.Context
+import com.github.ming13.oktwitter.dependency.annotation.AsyncScheduler
+import com.github.ming13.oktwitter.dependency.annotation.ViewScheduler
 import com.github.ming13.oktwitter.repository.http.HttpAuthenticator
 import com.github.ming13.oktwitter.repository.http.HttpLogger
 import com.github.ming13.oktwitter.repository.api.StreamingApi
@@ -11,7 +13,6 @@ import com.github.ming13.oktwitter.storage.TwitterKeys
 import com.github.ming13.oktwitter.util.Android
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.JsonDeserializer
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -56,7 +57,7 @@ class RepositoryModule
 
         callerBuilder.cache(httpCache)
 
-        // For some reason injecting List of interceptors using @Provides method does not work
+        // For some reason injecting List of interceptors using @Provides method does not work.
 
         val httpInterceptors = listOf(
             createAuthenticationInterceptor(),

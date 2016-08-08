@@ -1,6 +1,6 @@
 package com.github.ming13.oktwitter
 
-import com.github.ming13.oktwitter.dependency.RepositoryModule
+import com.github.ming13.oktwitter.dependency.module.RepositoryModule
 import com.github.ming13.oktwitter.repository.api.StreamingApi
 import com.github.ming13.oktwitter.repository.TweetsRepository
 import com.github.ming13.oktwitter.repository.model.Tweet

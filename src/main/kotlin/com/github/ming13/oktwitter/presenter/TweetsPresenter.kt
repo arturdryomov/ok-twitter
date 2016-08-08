@@ -2,9 +2,9 @@ package com.github.ming13.oktwitter.presenter
 
 import android.os.Bundle
 import com.github.ming13.oktwitter.contract.TweetsContract
-import com.github.ming13.oktwitter.dependency.AsyncScheduler
-import com.github.ming13.oktwitter.dependency.PerScreen
-import com.github.ming13.oktwitter.dependency.ViewScheduler
+import com.github.ming13.oktwitter.dependency.annotation.AsyncScheduler
+import com.github.ming13.oktwitter.dependency.annotation.PerScreen
+import com.github.ming13.oktwitter.dependency.annotation.ViewScheduler
 import com.github.ming13.oktwitter.repository.TweetsRepository
 import com.github.ming13.oktwitter.repository.model.Tweet
 import rx.Observable
@@ -70,7 +70,7 @@ class TweetsPresenter : TweetsContract.Presenter
     }
 
     private fun createTweetsObservable(): Observable<Tweet> {
-        // Take a single tweet per second instead of showing Twitter entropy as is
+        // Take a single tweet per second instead of showing Twitter entropy as is.
 
         return tweetsRepository.getTweets()
             .sample(1, TimeUnit.SECONDS)

@@ -1,4 +1,4 @@
-package com.github.ming13.oktwitter.dependency
+package com.github.ming13.oktwitter.dependency.module
 
 import android.app.Application
 import android.content.Context
