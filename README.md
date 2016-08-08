@@ -3,6 +3,8 @@
 Just a sample Twitter application developed using Kotlin, RxJava
 and other semi-hipster thingies.
 
+[Screenshots! Excitement!](img/)
+
 ## Building
 
 You will need JDK 1.7+ and Android SDK installed.
