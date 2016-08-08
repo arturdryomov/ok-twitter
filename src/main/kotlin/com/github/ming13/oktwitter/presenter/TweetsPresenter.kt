@@ -42,7 +42,7 @@ class TweetsPresenter : TweetsContract.Presenter
         this.viewScheduler = viewScheduler
     }
 
-    fun fetchTweets() {
+    private fun fetchTweets() {
         if (tweets.isEmpty()) {
             view?.showProgress()
         } else {
@@ -74,6 +74,8 @@ class TweetsPresenter : TweetsContract.Presenter
     }
 
     private fun createTweetsObservable(): Observable<Tweet> {
+        // Take a single tweet per second instead of showing Twitter entropy as is
+
         return tweetsRepository.getTweets()
             .sample(1, TimeUnit.SECONDS)
             .subscribeOn(asyncScheduler)

@@ -7,7 +7,7 @@ import rx.Observable
 import java.io.*
 import javax.inject.Inject
 
-class TweetsRepository
+open class TweetsRepository
 {
     val api: StreamingApi
 
@@ -16,7 +16,7 @@ class TweetsRepository
         this.api = api
     }
 
-    fun getTweets(): Observable<Tweet> {
+    open fun getTweets(): Observable<Tweet> {
         return Observable.create { subscriber ->
             val response = api.getSampleTweets().execute()
 
