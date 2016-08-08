@@ -1,6 +1,7 @@
 package com.github.ming13.oktwitter.repository.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class TweetUser
 (
@@ -12,7 +13,7 @@ data class TweetUser
 
     @SerializedName("profile_image_url_https")
     val avatar: String
-)
+) : Serializable
 {
     fun originalAvatar(): String {
         return avatar.replace("_normal", "")

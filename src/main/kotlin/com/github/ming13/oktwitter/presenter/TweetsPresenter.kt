@@ -52,10 +52,6 @@ class TweetsPresenter : TweetsContract.Presenter
 
         subscription.add(createTweetsObservable().subscribe(object : Observer<Tweet> {
             override fun onNext(tweet: Tweet) {
-                if (tweet.text == null) {
-                    return
-                }
-
                 tweets = tweets.plus(tweet)
 
                 view?.showContent()

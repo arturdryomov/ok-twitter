@@ -4,9 +4,14 @@ import android.content.Context
 import com.github.ming13.oktwitter.repository.http.HttpAuthenticator
 import com.github.ming13.oktwitter.repository.http.HttpLogger
 import com.github.ming13.oktwitter.repository.api.StreamingApi
+import com.github.ming13.oktwitter.repository.json.TweetDeserializer
+import com.github.ming13.oktwitter.repository.model.Tweet
 import com.github.ming13.oktwitter.storage.TwitterEndpoints
 import com.github.ming13.oktwitter.storage.TwitterKeys
 import com.github.ming13.oktwitter.util.Android
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonDeserializer
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -89,8 +94,17 @@ class RepositoryModule
     }
 
     @Provides
-    fun provideJsonConverter(): Converter.Factory {
-        return GsonConverterFactory.create()
+    fun provideJsonConverter(jsonReader: Gson): Converter.Factory {
+        return GsonConverterFactory.create(jsonReader)
+    }
+
+    @Provides @Singleton
+    fun provideJsonReader(): Gson {
+        val jsonReaderBuilder = GsonBuilder()
+
+        jsonReaderBuilder.registerTypeAdapter(Tweet::class.java, TweetDeserializer())
+
+        return jsonReaderBuilder.create()
     }
 
     @Provides

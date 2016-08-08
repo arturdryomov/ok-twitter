@@ -30,7 +30,7 @@ class TweetsContractTest
     }
 
     @Test
-    fun `shows progress before everything`() {
+    fun `shows progress before anything`() {
         whenever(repository.getTweets())
             .thenReturn(Observable.empty())
 
