@@ -1,24 +1,25 @@
 buildscript {
     repositories {
         jcenter()
+
+        maven {
+            url "http://dl.bintray.com/kotlin/kotlin-eap-1.1"
+        }
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:2.1.2"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.3"
+        classpath "com.android.tools.build:gradle:2.2.3"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.0-beta-38"
     }
 }
 
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
-
-kapt {
-    generateStubs = true
-}
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "com.github.ming13.oktwitter"
@@ -91,16 +92,20 @@ dependencies {
         maven {
             url "https://clojars.org/repo/"
         }
+
+        maven {
+            url "http://dl.bintray.com/kotlin/kotlin-eap-1.1"
+        }
     }
 
     kapt "com.jakewharton:butterknife-compiler:8.2.1"
-    kapt "com.google.dagger:dagger-compiler:2.5"
+    kapt "com.google.dagger:dagger-compiler:2.9"
 
     compile "com.android.support:recyclerview-v7:24.0.0"
-    compile "com.google.dagger:dagger:2.5"
+    compile "com.google.dagger:dagger:2.9"
     compile "com.jakewharton:butterknife:8.2.1"
     compile "com.jakewharton.timber:timber:4.1.2"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.3"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.1.0-beta-38"
     compile "com.squareup.okhttp3:okhttp:3.4.1"
     compile "com.squareup.okhttp3:logging-interceptor:3.4.1"
     compile "com.squareup.okhttp3:mockwebserver:3.4.1"
@@ -112,5 +117,4 @@ dependencies {
     compile "io.reactivex:rxandroid:1.2.1"
 
     testCompile "junit:junit:4.12"
-    testCompile "com.nhaarman:mockito-kotlin:0.5.2"
 }

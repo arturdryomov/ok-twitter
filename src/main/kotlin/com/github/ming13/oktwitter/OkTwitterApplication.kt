@@ -17,18 +17,15 @@ class OkTwitterApplication : Application()
     override fun onCreate() {
         super.onCreate()
 
-        setUpComponent()
+        applicationComponent = setUpComponent().build()
 
         setUpLogging()
     }
 
-    private fun setUpComponent() {
-        applicationComponent = DaggerApplicationComponent
+    private fun setUpComponent(): DaggerApplicationComponent.Builder = DaggerApplicationComponent
             .builder()
             .applicationModule(ApplicationModule(this))
             .repositoryModule(RepositoryModule())
-            .build()
-    }
 
     private fun setUpLogging() {
         if (Android.isDebugging()) {
