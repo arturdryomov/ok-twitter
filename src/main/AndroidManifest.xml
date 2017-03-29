@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.github.ming13.oktwitter"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.ming13.oktwitter">
 
-    <uses-permission
-        android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="false"
         android:name=".OkTwitterApplication"
+        android:allowBackup="false"
         android:label="@string/application_name"
         android:theme="@style/Theme.OkTwitter">
 
-        <activity
-            android:name=".activity.TweetsActivity">
+        <activity android:name=".activity.TweetsActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.github.ming13.oktwitter.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files" />
+
+        </provider>
 
     </application>
 

@@ -1,6 +1,8 @@
 package com.github.ming13.oktwitter
 
 import android.app.Application
+import android.content.Context
+import android.os.StrictMode
 import com.github.ming13.oktwitter.dependency.component.ApplicationComponent
 import com.github.ming13.oktwitter.dependency.component.DaggerApplicationComponent
 import com.github.ming13.oktwitter.dependency.module.ApplicationModule
@@ -12,6 +14,12 @@ class OkTwitterApplication : Application()
 {
     companion object {
         lateinit var applicationComponent: ApplicationComponent
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+
+        StrictMode.enableDefaults()
     }
 
     override fun onCreate() {
